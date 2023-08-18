@@ -22,15 +22,13 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldnestmax = 10
 vim.opt.foldenable = true
 
+vim.opt.cursorline = true
 
 require("autocmds")
 require("vimtex")
 require("theme")
 
-vim.cmd.colorscheme('tokyonight')
-vim.api.nvim_set_hl(0, 'Folded', {bg = "#4632A1"})
-
-vim.opt.cursorline = true
+vim.cmd.colorscheme 'catppuccin'
 
 require("telescope_binds")
 

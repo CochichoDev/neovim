@@ -25,7 +25,7 @@ lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 lazy.opts = {}
 
 lazy.setup({
-	{'folke/tokyonight.nvim'},
+    {"catppuccin/nvim", name = "catppuccin", priority = 1000},
     {"folke/noice.nvim",
         event = "VeryLazy",
         opts = {
@@ -48,12 +48,11 @@ lazy.setup({
     {'ARM9/arm-syntax-vim'},
 	{'tpope/vim-fugitive'},
 	{'lervag/vimtex'},
-	{
-		'nvim-lualine/lualine.nvim',
+	{'nvim-lualine/lualine.nvim',
 		opts = {
 			options = {
 				icons_enabled = false,
-				theme = 'dracula',
+				theme = 'catppuccin',
 				component_separators = '|',
 				section_separators = '',
 			},
@@ -87,8 +86,7 @@ lazy.setup({
           }
     },
     {'lukas-reineke/indent-blankline.nvim'},
-    {
-        "nvim-treesitter/nvim-treesitter",
+    {"nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function () 
           local configs = require("nvim-treesitter.configs")
@@ -100,6 +98,6 @@ lazy.setup({
               indent = { enable = true },  
             })
         end
-     }
+    }
 })
 
