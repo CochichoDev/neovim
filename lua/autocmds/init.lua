@@ -11,3 +11,10 @@ vim.api.nvim_create_autocmd("BufRead", {
 		end
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufRead", {
+	pattern = {"*.vert", "*.frag"},
+	callback = function()
+        vim.opt.filetype = "glsl"
+	end,
+})

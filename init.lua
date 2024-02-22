@@ -24,6 +24,12 @@ vim.opt.foldenable = true
 
 vim.opt.cursorline = true
 
+vim.diagnostic.config({
+    float = {
+        border = 'rounded',
+    }
+})
+
 require("autocmds")
 require("vimtex")
 require("theme")
@@ -40,6 +46,10 @@ local lspconfig = require'lspconfig'
 lspconfig.clangd.setup{}
 lspconfig.pylsp.setup{}
 lspconfig.texlab.setup{}
+lspconfig.glslls.setup {
+    cmd = { 'glslls', '--stdin', '--target-env', 'opengl' },
+}
+lspconfig.cmake.setup{}
 
 vim.api.nvim_create_autocmd('LspAttach',{
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -47,6 +57,8 @@ vim.api.nvim_create_autocmd('LspAttach',{
 		local opts = { buffer = ev.buf }
 		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 	end,
 })
 
