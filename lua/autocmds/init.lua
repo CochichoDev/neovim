@@ -18,3 +18,13 @@ vim.api.nvim_create_autocmd("BufRead", {
         vim.opt.filetype = "glsl"
 	end,
 })
+
+--vim.api.nvim_create_autocmd("BufEnter", {
+--	callback = function()
+--        local f = vim.fn.expand('%:p')
+--        if vim.fn.isdirectory(f) == 0 and not f:match("neo%-tree") then
+--            --print(f)
+--        	--vim.cmd('Neotree reveal_file=' .. f)
+--        end
+--	end,
+--})
