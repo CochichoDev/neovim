@@ -26,6 +26,7 @@ lazy.opts = {}
 
 lazy.setup({
     {"catppuccin/nvim", name = "catppuccin", priority = 1000},
+<<<<<<< HEAD
     {
         "neovim/nvim-lspconfig",
         lazy = false,
@@ -50,6 +51,27 @@ lazy.setup({
         "rcarriga/nvim-notify",
         }
     },
+=======
+    --{"folke/noice.nvim",
+    --    event = "VeryLazy",
+    --    opts = {
+    --      cmdline = {
+    --            format = {
+    --                search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+    --                search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+    --            }
+    --        }
+    --    },
+    --    dependencies = {
+    --    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --    "MunifTanjim/nui.nvim",
+    --    -- OPTIONAL:
+    --    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --    --   If not available, we use `mini` as the fallback
+    --    "rcarriga/nvim-notify",
+    --    }
+    --},
+>>>>>>> a7b173f (Uncommited changed)
     {'ARM9/arm-syntax-vim'},
 	{'tpope/vim-fugitive'},
 	{'lervag/vimtex'},

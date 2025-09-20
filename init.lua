@@ -56,6 +56,7 @@ vim.cmd.colorscheme 'catppuccin'
 
 require("telescope_binds")
 
+<<<<<<< HEAD
 require("notify").setup({
   background_colour = "#000000",
 })
@@ -66,6 +67,20 @@ vim.lsp.config('glslls', require('lspconfig.configs.glslls').default_config)
 vim.lsp.config('gopls', require('lspconfig.configs.gopls').default_config)
 vim.lsp.config('cmake', require('lspconfig.configs.cmake').default_config)
 vim.lsp.config('jdtls', require('lspconfig.configs.jdtls').default_config)
+=======
+--require("notify").setup({
+--  background_colour = "#000000",
+--})
+
+local lspconfig = require'lspconfig'
+lspconfig.clangd.setup{}
+lspconfig.pylsp.setup{}
+lspconfig.texlab.setup{}
+lspconfig.glslls.setup {
+    cmd = { 'glslls', '--stdin', '--target-env', 'opengl' },
+}
+lspconfig.cmake.setup{}
+>>>>>>> a7b173f (Uncommited changed)
 
 vim.api.nvim_create_autocmd('LspAttach',{
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -117,5 +132,8 @@ cmp.setup {
 	},
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7b173f (Uncommited changed)
 require("ibl").setup()
