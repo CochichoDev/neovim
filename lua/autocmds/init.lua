@@ -19,12 +19,13 @@ vim.api.nvim_create_autocmd("BufRead", {
 	end,
 })
 
---vim.api.nvim_create_autocmd("BufEnter", {
---	callback = function()
---        local f = vim.fn.expand('%:p')
---        if vim.fn.isdirectory(f) == 0 and not f:match("neo%-tree") then
---            --print(f)
---        	--vim.cmd('Neotree reveal_file=' .. f)
---        end
---	end,
---})
+local api = require("nvim-tree.api")
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    nested = true,
+    callback = function()
+        if (vim.fn.bufname() == "NvimTree_1") then return end
+
+        api.tree.find_file({ buf = vim.fn.bufnr() })
+    end,
+})

@@ -26,11 +26,22 @@ lazy.opts = {}
 
 lazy.setup({
     {"catppuccin/nvim", name = "catppuccin", priority = 1000},
-<<<<<<< HEAD
     {
         "neovim/nvim-lspconfig",
         lazy = false,
     },
+    {
+      "nvim-tree/nvim-tree.lua",
+      version = "*",
+      lazy = false,
+      dependencies = {
+        "nvim-tree/nvim-web-devicons",
+      },
+      config = function()
+        require("nvim-tree").setup {}
+      end,
+    },
+    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
     {
         "folke/noice.nvim",
         event = "VeryLazy",
@@ -51,27 +62,6 @@ lazy.setup({
         "rcarriga/nvim-notify",
         }
     },
-=======
-    --{"folke/noice.nvim",
-    --    event = "VeryLazy",
-    --    opts = {
-    --      cmdline = {
-    --            format = {
-    --                search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
-    --                search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
-    --            }
-    --        }
-    --    },
-    --    dependencies = {
-    --    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    --    "MunifTanjim/nui.nvim",
-    --    -- OPTIONAL:
-    --    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --    --   If not available, we use `mini` as the fallback
-    --    "rcarriga/nvim-notify",
-    --    }
-    --},
->>>>>>> a7b173f (Uncommited changed)
     {'ARM9/arm-syntax-vim'},
 	{'tpope/vim-fugitive'},
 	{'lervag/vimtex'},
@@ -128,22 +118,6 @@ lazy.setup({
         ---@type render.md.UserConfig
         opts = {},
     },
-    --{
-    --    'romgrk/barbar.nvim',
-    --    name = "barbar",
-    --    dependencies = {
-    --      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-    --      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-    --    },
-    --    init = function() vim.g.barbar_auto_setup = false end,
-    --    opts = {
-    --      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-    --      -- animation = true,
-    --      -- insert_at_start = true,
-    --      -- …etc.
-    --    },
-    --    version = '^1.0.0', -- optional: only update when a new 1.x version is released
-    --},
     {
         "utilyre/barbecue.nvim",
         name = "barbecue",
@@ -155,42 +129,6 @@ lazy.setup({
         opts = {
           -- configurations go here
         }
-    },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        name = "neo-tree",
-        branch = "v3.x",
-        dependencies = {
-          "nvim-lua/plenary.nvim",
-          "MunifTanjim/nui.nvim",
-          "nvim-tree/nvim-web-devicons", -- optional, but recommended
-        },
-        lazy = false, -- neo-tree will lazily load itself
-        --cmd = 'Neotree',
-        --init = function()
-        --  vim.api.nvim_create_autocmd('VimEnter', {
-        --    -- make a group to be able to delete it later
-        --    group = vim.api.nvim_create_augroup('NeoTreeInit', {clear = true}),
-        --    callback = function()
-        --      local f = vim.fn.expand('%:p')
-        --        if vim.fn.isdirectory(f) == 0 then
-        --            vim.cmd('Neotree action=show')
-        --            vim.cmd('Neotree reveal_file=' .. f)
-        --        else
-        --            if #vim.api.nvim_list_bufs() == 1 and vim.bo[0].buftype == "" and vim.fn.bufname() == "" then
-        --                vim.cmd("enew")         -- create a new empty buffer
-        --                vim.cmd("bdelete!")     -- delete the initial empty buffer
-        --            end
-        --      end
-        --    end
-        --  })
-        --  -- keymaps
-        --end,
-        --opts = {
-        --  filesystem = {
-        --    hijack_netrw_behavior = 'open_current'
-        --  }
-        --}
     },
     {
         "hrsh7th/nvim-cmp",

@@ -1,20 +1,8 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 require("lazy_conf")
-
---require("neo-tree").setup({
---    window = {
---        position = "left",
---        width = 25,
---    },
---})
-
---require("barbar").setup({
---    sidebar_filetypes = {
---        ['neo-tree'] = {event = 'BufWipeout'},
---    },
---})
-
 require("remaps")
 
 vim.opt.clipboard:append('unnamedplus')
@@ -50,37 +38,37 @@ vim.diagnostic.config({
 require("autocmds")
 require("vimtex")
 require("theme")
-require("neo-tree")
 
 vim.cmd.colorscheme 'catppuccin'
 
 require("telescope_binds")
 
-<<<<<<< HEAD
+require("bufferline").setup({
+    options = {
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "File Explorer",
+                highlight = "Directory",
+                separator = true -- use a "true" to enable the default, or set your own character
+            }
+        },
+        separator_style = "slant",
+    }
+})
+
 require("notify").setup({
   background_colour = "#000000",
 })
-vim.lsp.config('clangd', require('lspconfig.configs.clangd').default_config)
+--vim.lsp.config('clangd', require('lspconfig.configs.clangd').default_config)
 vim.lsp.config('pylsp', require('lspconfig.configs.pylsp').default_config)
 vim.lsp.config('texlab', require('lspconfig.configs.texlab').default_config)
 vim.lsp.config('glslls', require('lspconfig.configs.glslls').default_config)
 vim.lsp.config('gopls', require('lspconfig.configs.gopls').default_config)
 vim.lsp.config('cmake', require('lspconfig.configs.cmake').default_config)
 vim.lsp.config('jdtls', require('lspconfig.configs.jdtls').default_config)
-=======
---require("notify").setup({
---  background_colour = "#000000",
---})
 
-local lspconfig = require'lspconfig'
-lspconfig.clangd.setup{}
-lspconfig.pylsp.setup{}
-lspconfig.texlab.setup{}
-lspconfig.glslls.setup {
-    cmd = { 'glslls', '--stdin', '--target-env', 'opengl' },
-}
-lspconfig.cmake.setup{}
->>>>>>> a7b173f (Uncommited changed)
+vim.lsp.enable('clangd')
 
 vim.api.nvim_create_autocmd('LspAttach',{
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -132,8 +120,4 @@ cmp.setup {
 	},
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a7b173f (Uncommited changed)
 require("ibl").setup()
